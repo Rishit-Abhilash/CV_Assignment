@@ -7,23 +7,23 @@ This repository contains the complete implementation of **Paper 2: "Classificati
 ## Dataset
 
 **OASIS-2 (Open Access Series of Imaging Studies)**
-- Raw 3D NIfTI MRI volumes: 1,367 brain scans
-- Extracted 2D slices: ~6,400 images
+- Raw 3D NIfTI MRI volumes: 373 subject-scan directories (OAS2_RAW_PART1 + PART2)
+- Extracted 2D slices: 5,468 images total
 - Binary classification: Demented vs Non-Demented
 - Labels based on CDR (Clinical Dementia Rating) scores
-- Train/Test split: 80/20 (5,120 / 1,280 images)
+- Train/Test split: 80/20 (4,374 train / 1,094 test images)
 
 ## Models Implemented
 
 All 5 models from Paper 2 with exact specifications:
 
-| Model | Architecture | Input Size | Epochs | Batch | Target Accuracy |
-|-------|--------------|------------|--------|-------|-----------------|
-| 1. CNNs-without-Aug | 13-layer CNN | 224×224×3 | 100 | 30 | 99.22% |
-| 2. CNNs-with-Aug | 13-layer CNN + Aug | 128×128×3 | 100 | 65 | 99.61% |
-| 3. CNN-LSTM-with-Aug ⭐ | 7-layer CNN-LSTM | 128×128×3 | 25 | 16 | **99.92%** |
-| 4. CNN-SVM-with-Aug | 6-layer CNN-SVM | 224×224×3 | 20 | 32 | 99.14% |
-| 5. VGG16-SVM-with-Aug | Transfer Learning | 224×224×3 | - | 32 | 98.67% |
+| Model | Architecture | Input Size | Epochs | Batch | Achieved Accuracy |
+|-------|--------------|------------|--------|-------|-------------------|
+| 1. CNNs-without-Aug ⭐ | 13-layer CNN | 224×224×3 | 100 | 30 | **98.45%** |
+| 2. CNNs-with-Aug | 13-layer CNN + Aug | 128×128×3 | 100 | 65 | 66.64% |
+| 3. CNN-LSTM-with-Aug | 7-layer CNN-LSTM | 128×128×3 | 25 | 16 | 97.99% |
+| 4. CNN-SVM-with-Aug | 6-layer CNN-SVM | 224×224×3 | 20 | 32 | 56.31% |
+| 5. VGG16-SVM-with-Aug | Transfer Learning | 224×224×3 | - | 32 | (Not trained) |
 
 ## Repository Structure
 
@@ -167,28 +167,59 @@ Pre-trained VGG16 → Flatten → SVM (Linear kernel) → Dense(2, Softmax)
 - **Training Time** (seconds)
 - **Testing Time** (milliseconds)
 
-## Expected Results
+## Results
 
-### Model Performance (Paper 2 Targets)
+### Model Performance (Achieved)
 
-| Model | Accuracy | Precision | Recall | F1-Score | Specificity |
-|-------|----------|-----------|--------|----------|-------------|
-| CNN-LSTM ⭐ | 99.92% | 100.00% | 99.50% | 99.70% | 100.00% |
-| CNN-with-Aug | 99.61% | 100.00% | 97.39% | 98.70% | 100.00% |
-| CNN-without-Aug | 99.22% | 100.00% | 95.00% | 97.39% | 100.00% |
-| CNN-SVM | 99.14% | 100.00% | 94.00% | 97.10% | 100.00% |
-| VGG16-SVM | 98.67% | 100.00% | 91.20% | 95.39% | 100.00% |
+| Model | Accuracy | Precision | Recall | F1-Score | Specificity | Train Time (s) |
+|-------|----------|-----------|--------|----------|-------------|----------------|
+| CNNs-without-Aug ⭐ | **98.45%** | 98.57% | 97.96% | 98.26% | 98.84% | 443.5 |
+| CNN-LSTM-with-Aug | 97.99% | 97.57% | 97.96% | 97.76% | 98.01% | 108.1 |
+| CNNs-with-Aug | 66.64% | 69.69% | 45.42% | 54.99% | 83.91% | 474.7 |
+| CNN-SVM-with-Aug | 56.31% | 84.21% | 3.26% | 6.27% | N/A | N/A |
+| VGG16-SVM-with-Aug | - | - | - | - | - | - |
+
+**Note:** Models 2 and 4 did not achieve the expected performance from Paper 2. Model 1 (CNNs-without-Aug) achieved the best results with 98.45% accuracy.
+
+### Comparison with Paper 2 Targets
+
+| Model | Achieved | Paper 2 Target | Difference |
+|-------|----------|----------------|------------|
+| CNNs-without-Aug | 98.45% | 99.22% | -0.77% |
+| CNN-LSTM-with-Aug | 97.99% | 99.92% | -1.93% |
+| CNNs-with-Aug | 66.64% | 99.61% | -32.97% |
+| CNN-SVM-with-Aug | 56.31% | 99.14% | -42.83% |
+| VGG16-SVM-with-Aug | - | 98.67% | Not trained |
+
+### Key Findings
+
+**Best Performing Model:** CNNs-without-Aug (98.45% accuracy)
+- Achieved 98.45% accuracy with 98.84% specificity
+- Training time: 443.5 seconds
+- Strong precision (98.57%) and recall (97.96%)
+- F1-Score: 98.26%
+
+**CNN-LSTM Model:** Second best (97.99% accuracy)
+- Faster training time (108.1s vs 443.5s)
+- Good balance of all metrics
+- Most efficient model in terms of accuracy per training time
+
+**Underperforming Models:**
+- CNNs-with-Aug and CNN-SVM-with-Aug significantly underperformed
+- May require hyperparameter tuning or additional training epochs
+- Dataset differences may have contributed to lower performance
 
 ## Key Features
 
-✅ **Exact Paper Replication** - All models match Paper 2 specifications precisely
+✅ **Paper 2 Implementation** - 4/5 models successfully trained with Paper 2 specifications
 ✅ **Binary Classification** - Demented vs Non-Demented (from CDR scores)
-✅ **Real Medical Data** - OASIS-2 dataset with 1,367 3D brain scans
-✅ **5 Deep Learning Models** - From simple CNN to transfer learning
+✅ **Real Medical Data** - OASIS-2 dataset with 373 subject scans, 5,468 2D slices
+✅ **Deep Learning Models** - CNNs, CNN-LSTM, CNN-SVM, and Transfer Learning
 ✅ **Complete Pipeline** - Data extraction → Training → Evaluation
 ✅ **Jupyter Notebooks** - Interactive, reproducible, well-documented
-✅ **Comprehensive Evaluation** - All metrics from Paper 2
-✅ **Visualization** - Confusion matrices, training curves, comparisons
+✅ **Comprehensive Evaluation** - All metrics from Paper 2 (accuracy, precision, recall, F1, specificity)
+✅ **Visualization** - Confusion matrices, training curves, comparison charts
+✅ **Best Result** - 98.45% accuracy achieved with CNNs-without-Aug model
 
 ## Citation
 
