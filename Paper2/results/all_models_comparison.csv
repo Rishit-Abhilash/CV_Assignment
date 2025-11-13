@@ -1,0 +1,5 @@
+Model,Accuracy,Precision,Recall,F1-Score,Specificity,Train Time (s),Test Time (ms)
+CNNs-without-Aug,98.45%,98.57%,97.96%,98.26%,98.84%,443.5,1105.1
+CNNs-with-Aug,66.64%,69.69%,45.42%,54.99%,83.91%,474.7,649.0
+CNN-LSTM-with-Aug,97.99%,97.57%,97.96%,97.76%,98.01%,108.1,340.5
+CNN-SVM-with-Aug,56.31%,84.21%,3.26%,6.27%,0.00%,0.0,0.0

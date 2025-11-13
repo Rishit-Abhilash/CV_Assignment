@@ -33,8 +33,9 @@ cvvenv/
 # *.hdf5
 # *.pkl
 # *.pickle
-# *.npy
+*.npy
 # *.npz
+*.rar
 
 # Model files
 *.pth
