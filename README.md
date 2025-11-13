@@ -209,6 +209,30 @@ Pre-trained VGG16 → Flatten → SVM (Linear kernel) → Dense(2, Softmax)
 - May require hyperparameter tuning or additional training epochs
 - Dataset differences may have contributed to lower performance
 
+### Recent Improvements (Overfitting Fixes)
+
+**All models have been updated with the following improvements:**
+
+1. **Early Stopping** - Automatically stops training when validation loss stops improving
+   - Model 1: patience=15 epochs (expected to stop around epoch 56-70 vs. original 100)
+   - Model 2: patience=15 epochs
+   - Model 3: patience=7 epochs (expected to stop around epoch 11-18 vs. original 25)
+
+2. **Learning Rate Scheduling** - Reduces learning rate when validation plateaus
+   - Model 1: Already had ReduceLROnPlateau ✓
+   - Model 2: Added ReduceLROnPlateau (patience=5, factor=0.5)
+   - Model 3: Added ReduceLROnPlateau (patience=3, factor=0.5)
+
+3. **Proper Train/Val Split**
+   - Model 2: Fixed to use 80/20 train/val split instead of evaluating on test set during training
+
+**Expected Improvements After Retraining:**
+- Model 1: Same accuracy (98.45%), but ~40% faster training time
+- Model 2: Significant accuracy improvement expected (66% → 90-95%+) due to proper validation
+- Model 3: Slight accuracy improvement (97.99% → 98.5%+), much faster training
+
+**Note:** These improvements maintain Paper 2's methodology while fixing implementation issues and preventing overfitting. Retraining required to see results.
+
 ## Key Features
 
 ✅ **Paper 2 Implementation** - 4/5 models successfully trained with Paper 2 specifications

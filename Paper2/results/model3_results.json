@@ -1,10 +1,21 @@
 {
   "model_name": "CNN-LSTM-with-Aug",
-  "accuracy": 0.979890310786106,
-  "precision": 0.9756592292089249,
-  "recall": 0.9796334012219959,
-  "f1_score": 0.9776422764227642,
-  "specificity": 0.9800995024875622,
-  "training_time_seconds": 108.05468511581421,
-  "testing_time_ms": 340.470552444458
+  "accuracy": 0.9890310786106032,
+  "precision": 0.9897750511247444,
+  "recall": 0.9857433808553971,
+  "f1_score": 0.9877551020408163,
+  "specificity": 0.9917081260364843,
+  "auc": 0.9967305360502308,
+  "training_time_seconds": 108.9580385684967,
+  "testing_time_ms": 473.06060791015625,
+  "confusion_matrix": [
+    [
+      598,
+      5
+    ],
+    [
+      7,
+      484
+    ]
+  ]
 }

@@ -1,10 +1,10 @@
 {
   "model_name": "CNNs-with-Aug",
-  "accuracy": 0.6663619744058501,
-  "precision": 0.696875,
-  "recall": 0.45417515274949083,
-  "f1_score": 0.5499383477188656,
-  "specificity": 0.8391376451077943,
-  "training_time_seconds": 474.6534073352814,
-  "testing_time_ms": 649.0087509155273
+  "accuracy": 0.6462522851919561,
+  "precision": 0.6688311688311688,
+  "recall": 0.4195519348268839,
+  "f1_score": 0.5156445556946183,
+  "specificity": 0.8308457711442786,
+  "training_time_seconds": 393.26205372810364,
+  "testing_time_ms": 468.9910411834717
 }
