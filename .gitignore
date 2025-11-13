@@ -1,0 +1,75 @@
+# Python
+*.py[cod]
+*$py.class
+__pycache__/
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+cvvenv/
+.venv/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Data files (uncomment if you don't want to track large datasets)
+# *.csv
+# *.h5
+# *.hdf5
+# *.pkl
+# *.pickle
+# *.npy
+# *.npz
+
+# Model files
+*.pth
+*.pt
+*.ckpt
+*.h5
+*.pb
+*.onnx
+
+# Logs
+*.log
+logs/
+*.out
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Claude Code
+.claude/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Cache
+.cache/
+*.cache
+
+# Environment variables
+.env
+.env.local
+
+# Project-specific exclusions
+Paper1/
+Paper2/Raw_Data/
