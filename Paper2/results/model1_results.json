@@ -1,21 +1,21 @@
 {
   "model_name": "CNNs-without-Aug",
-  "accuracy": 0.9826325411334552,
-  "precision": 0.9896265560165975,
-  "recall": 0.9714867617107943,
-  "f1_score": 0.9804727646454265,
-  "specificity": 0.9917081260364843,
-  "auc": 0.9936975002786476,
-  "training_time_seconds": 383.33506989479065,
-  "testing_time_ms": 957.7007293701172,
+  "accuracy": 0.9835466179159049,
+  "precision": 0.9816700610997964,
+  "recall": 0.9816700610997964,
+  "f1_score": 0.9816700610997964,
+  "specificity": 0.9850746268656716,
+  "auc": 0.9930760319245592,
+  "training_time_seconds": 590.1078805923462,
+  "testing_time_ms": 1392.6756381988525,
   "confusion_matrix": [
     [
-      598,
-      5
+      594,
+      9
     ],
     [
-      14,
-      477
+      9,
+      482
     ]
   ],
   "hyperparameters": {

@@ -1,18 +1,28 @@
 {
   "model_name": "Enhanced-CNN-LSTM-with-Attention",
-  "accuracy": 0.9762340036563071,
-  "precision": 0.9894736842105263,
-  "recall": 0.9572301425661914,
-  "f1_score": 0.9730848861283644,
-  "specificity": 0.9917081260364843,
-  "auc": 0.9946736109000145,
-  "training_time_seconds": 233.22973775863647,
-  "testing_time_ms": 924.5061874389648,
+  "accuracy": 0.9826325411334552,
+  "precision": 0.9836065573770492,
+  "recall": 0.9775967413441955,
+  "f1_score": 0.9805924412665985,
+  "specificity": 0.9867330016583747,
+  "auc": 0.9972979636778767,
+  "training_time_seconds": 265.0492196083069,
+  "testing_time_ms": 687.758207321167,
   "architecture_features": [
     "Spatial Attention",
     "Channel Attention (SE-Blocks)",
     "Residual Connections",
     "Batch Normalization",
     "LSTM Temporal Modeling"
+  ],
+  "confusion_matrix": [
+    [
+      595,
+      8
+    ],
+    [
+      11,
+      480
+    ]
   ]
 }
